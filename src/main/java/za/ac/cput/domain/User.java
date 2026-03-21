@@ -1,6 +1,6 @@
 package za.ac.cput.domain;
 
-public class User {
+public abstract class User {
     private int userId;
     private String name;
     private String email;
