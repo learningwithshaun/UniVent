@@ -1,13 +1,14 @@
 package za.ac.cput.factory;
 
+import org.junit.Test;
 import za.ac.cput.domain.Event;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class EventFactoryTest {
+import static org.junit.Assert.*;
+
+public class EventFactoryTest {
 
     @Test
-    void createEvent() {
+    public void createEvent() {
         Event event = EventFactory.createEvent(
                 "Tech Talk",
                 "Java Workshop",
@@ -20,7 +21,7 @@ class EventFactoryTest {
     }
 
     @Test
-    void createEventFail() {
+    public void createEventFail() {
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             EventFactory.createEvent(
