@@ -48,17 +48,20 @@ import java.util.Map;
         public Event update(Event event) {
             if (eventMap.containsKey(event.getEventId())) {
                 eventMap.put(event.getEventId(), event);
+                return event;
             }
-            return event;
+            return null;
         }
 
         @Override
         public boolean delete(Integer id) {
+
             return eventMap.remove(id) != null;
         }
 
         @Override
         public List<Event> getAll() {
+
             return new ArrayList<>(eventMap.values());
         }
 
