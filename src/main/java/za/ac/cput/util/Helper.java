@@ -22,6 +22,7 @@ public class Helper {
         return !isNullOrEmpty(dateTime);
         // You can improve this later to check format like "YYYY-MM-DD HH:MM"
     }
+
     // Venue-specific validation methods
     public static boolean isValidVenueId(int venueId) {
         return isPositive(venueId);
@@ -39,13 +40,11 @@ public class Helper {
         return !isNullOrEmpty(locationDetails);
     }
 
-    //  Added for BookingFactory
-    public static boolean isValidDateTime(java.time.LocalDateTime dateTime) {
-        // Basic check: not null and not in the past
-        return dateTime != null && !dateTime.isBefore(java.time.LocalDateTime.now());
-    public static boolean isValidCapacity(int capacity) {
-        return isPositive(capacity);
-    }
+
+
+        public static boolean isValidDateTime(java.time.LocalDateTime dateTime) {
+            return dateTime != null && !dateTime.isBefore(java.time.LocalDateTime.now());
+        }
 
 }
 
