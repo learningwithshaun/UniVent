@@ -30,6 +30,7 @@ public class OrganizerFactoryTest {
         assertEquals("Bitdevs", organizer.getOrganizationName());
         assertEquals("NGO", organizer.getOrganizationType());
         assertEquals("bitdevs@gmail.com", organizer.getContactEmail());
+        assertNotNull(organizer.getEvents());
     }
 
     @Test
@@ -42,7 +43,7 @@ public class OrganizerFactoryTest {
     @Test
     public void showExceptionIfNameIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            OrganizerFactory.createOrganizer("", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
+            OrganizerFactory.createOrganizer("   ", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
         });
     }
 
@@ -56,14 +57,15 @@ public class OrganizerFactoryTest {
     @Test
     public void shouldThrowIfEmailIsInvalid(){
         assertThrows(IllegalArgumentException.class, () -> {
-            OrganizerFactory.createOrganizer("", "amandamsutu02@gmailcom", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
+            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
         });
     }
 
     @Test
     public void shouldAcceptValidComplexEmail(){
-        Organizer organizer = OrganizerFactory.createOrganizer("Amanda", "amandamsutu02+@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
-
+        assertThrows(IllegalArgumentException.class, () -> {
+            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02+test~@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
+        });
     }
 
     @Test
@@ -76,7 +78,7 @@ public class OrganizerFactoryTest {
     @Test
     public void showExceptionIfPasswordIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
+            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "   ", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
         });
     }
 
@@ -98,7 +100,7 @@ public class OrganizerFactoryTest {
     @Test
     public void showExceptionIfOrganizationNameIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "", "0848882617", "", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
+            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "123", "0848882617", "   ", "NGO", new ArrayList<>(), "bitdevs@gmail.com");
         });
     }
 
@@ -112,7 +114,7 @@ public class OrganizerFactoryTest {
     @Test
     public void showExceptionIfOrganizationTypeIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "", "0848882617", "Bitdevs", "", new ArrayList<>(), "bitdevs@gmail.com");
+            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "   ", new ArrayList<>(), "bitdevs@gmail.com");
         });
     }
 
@@ -126,13 +128,13 @@ public class OrganizerFactoryTest {
     @Test
     public void shouldThrowIfContactEmailIsInvalid(){
         assertThrows(IllegalArgumentException.class, () -> {
-            OrganizerFactory.createOrganizer("", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevsgmail.com");
+            OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevsgmail.com");
         });
     }
 
     @Test
     public void shouldAcceptValidComplexContactEmail(){
-        Organizer organizer = OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs+@gmail.com");
-
+        Organizer organizer = OrganizerFactory.createOrganizer("Amanda", "amandamsutu02@gmail.com", "123", "0848882617", "Bitdevs", "NGO", new ArrayList<>(), "bitdevs+test@gmail.com");
+        assertNotNull(organizer);
     }
 }

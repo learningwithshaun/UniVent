@@ -31,6 +31,8 @@ public class AdministratorFactoryTest {
         assertEquals("123", administrator.getPassword());
         assertEquals("0614845522", administrator.getPhoneNumber());
         assertEquals("Super", administrator.getAdminLevel());
+        assertNotNull(administrator.getManagedUsers());
+        assertNotNull(administrator.getManagedEvents());
     }
 
     @Test
@@ -43,7 +45,7 @@ public class AdministratorFactoryTest {
     @Test
     public void showExceptionIfNameIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AdministratorFactory.createAdministrator("", "sihle@gmail.com", "123", "0614845522", "Super", new ArrayList<>(), new ArrayList<>());
+            AdministratorFactory.createAdministrator("   ", "sihle@gmail.com", "123", "0614845522", "Super", new ArrayList<>(), new ArrayList<>());
         });
     }
 
@@ -63,7 +65,9 @@ public class AdministratorFactoryTest {
 
     @Test
     public void shouldAcceptValidComplexEmail(){
-        AdministratorFactory.createAdministrator("Sihle", "sihle+@gmail.com", "123", "0614845522", "Super", new ArrayList<>(), new ArrayList<>());
+        assertThrows(IllegalArgumentException.class, () -> {
+            AdministratorFactory.createAdministrator("Sihle", "sihle+test+~@gmail.com", "123", "0614845522", "Super", new ArrayList<>(), new ArrayList<>());
+        });
 
     }
 
@@ -77,7 +81,7 @@ public class AdministratorFactoryTest {
     @Test
     public void showExceptionIfPasswordIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AdministratorFactory.createAdministrator("Sihle", "sihle@gmail.com", "", "0614845522", "Super", new ArrayList<>(), new ArrayList<>());
+            AdministratorFactory.createAdministrator("Sihle", "sihle@gmail.com", "   ", "0614845522", "Super", new ArrayList<>(), new ArrayList<>());
         });
     }
 
@@ -90,16 +94,16 @@ public class AdministratorFactoryTest {
     }
 
     @Test
-    public void showExceptionIfAdminIsEmpty() {
+    public void showExceptionIfAdminLevelIsEmpty() {
         assertThrows(IllegalArgumentException.class, () -> {
             AdministratorFactory.createAdministrator("Sihle", "sihle@gmail.com", "123", "0614845522", "", new ArrayList<>(), new ArrayList<>());
         });
     }
 
     @Test
-    public void showExceptionIfAdminIsBlank() {
+    public void showExceptionIfAdminLevelIsBlank() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AdministratorFactory.createAdministrator("Sihle", "sihle@gmail.com", "123", "0614845522", "", new ArrayList<>(), new ArrayList<>());
+            AdministratorFactory.createAdministrator("Sihle", "sihle@gmail.com", "123", "0614845522", "     ", new ArrayList<>(), new ArrayList<>());
         });
     }
 }
