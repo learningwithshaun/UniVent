@@ -45,6 +45,13 @@ public class Helper {
         public static boolean isValidDateTime(java.time.LocalDateTime dateTime) {
             return dateTime != null && !dateTime.isBefore(java.time.LocalDateTime.now());
         }
+    public static boolean isValidPhone(String phoneNumber) {
+        return !isNullOrEmpty(phoneNumber) && phoneNumber.matches("^\\d{10}$");
+    }
+
+    public static boolean isValidCapacity(int capacity) {
+        return isPositive(capacity);
+    }
 
 }
 
