@@ -1,4 +1,4 @@
-package za.ac.cput.factoryTest;
+package za.ac.cput.repositoryTest;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Venue;
@@ -154,3 +154,4 @@ public class VenueRepositoryTest {
         assertNull(repo.read(7));
     }
 }
+
