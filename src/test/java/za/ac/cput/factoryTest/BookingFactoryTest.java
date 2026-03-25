@@ -1,4 +1,4 @@
-package za.ac.cput.factory;
+package za.ac.cput.factoryTest;
 
 import org.junit.Test;
 import za.ac.cput.domain.Booking;
@@ -7,6 +7,7 @@ import za.ac.cput.domain.Student;
 import za.ac.cput.domain.Event;
 import java.time.LocalDateTime;
 import static org.junit.Assert.*;
+import za.ac.cput.factory.BookingFactory;
 
 public class BookingFactoryTest {
 
