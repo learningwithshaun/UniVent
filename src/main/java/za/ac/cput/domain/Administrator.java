@@ -1,5 +1,7 @@
 package za.ac.cput.domain;
 
+import za.ac.cput.util.UserIdGenerator;
+
 import java.util.List;
 
 /**Student name: Amanda Msutu
@@ -64,12 +66,25 @@ public class Administrator extends User {
         }
 
         @Override
+        public Administrator.Builder copy(User user) {
+            super.copy(user);
+            Administrator administrator = (Administrator) user;
+            this.adminLevel = administrator.getAdminLevel();
+            this.managedUsers = administrator.getManagedUsers();
+            this.managedEvents = administrator.getManagedEvents();
+            return this;
+        }
+
+        @Override
         protected Builder self() {
             return this;
         }
 
         @Override
         public Administrator build() {
+            if (this.getUserId() == 0) {
+                this.setUserId(UserIdGenerator.getInstance().generateId());
+            }
             return new Administrator(this);
         }
     }

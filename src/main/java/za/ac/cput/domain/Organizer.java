@@ -1,5 +1,7 @@
 package za.ac.cput.domain;
 
+import za.ac.cput.util.UserIdGenerator;
+
 import java.util.List;
 
 /**Student name: Amanda Msutu
@@ -76,12 +78,26 @@ public class Organizer extends User {
         }
 
         @Override
+        public Organizer.Builder copy(User user) {
+            super.copy(user);
+            Organizer organizer = (Organizer) user;
+            this.organizationName = organizer.getOrganizationName();
+            this.organizationType = organizer.getOrganizationType();
+            this.events = organizer.getEvents();
+            this.contactEmail = organizer.getContactEmail();
+            return this;
+        }
+
+        @Override
         protected Builder self() {
             return this;
         }
 
         @Override
         public Organizer build() {
+            if (this.getUserId() == 0) {
+                this.setUserId(UserIdGenerator.getInstance().generateId());
+            }
             return new Organizer(this);
         }
     }
