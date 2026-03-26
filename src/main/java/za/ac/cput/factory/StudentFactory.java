@@ -1,7 +1,11 @@
 package za.ac.cput.factory;
 
+import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.Student;
 import za.ac.cput.util.Helper;
+
+import java.util.List;
+
 /**Student name: Samukelo Ndlela
  * Student number: 231116144
  * Group: 3H
@@ -18,7 +22,8 @@ public class StudentFactory {
                                          String studentNumber,
                                          String faculty,
                                          String department,
-                                         int yearOfStudy){
+                                         int yearOfStudy,
+                                         List<Booking> bookings){
 
         if (Helper.isNullOrEmpty(name))
             throw new IllegalArgumentException("Name is required");
@@ -51,7 +56,8 @@ public class StudentFactory {
                 .setStudentNumber(studentNumber)
                 .setFaculty(faculty)
                 .setDepartment(department)
-                .yearOfStudy(yearOfStudy)
+                .setYearOfStudy(yearOfStudy)
+                .setBookings(bookings)
                 .build();
     }
 }

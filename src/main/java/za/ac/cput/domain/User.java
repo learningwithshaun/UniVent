@@ -71,6 +71,9 @@ public abstract class User {
             this.userId = userId;
             return self();
         }
+        public int getUserId() {
+            return userId;
+        }
         public T setName(String name){
             this.name = name;
             return self();
@@ -91,6 +94,16 @@ public abstract class User {
             this.role = role;
             return self();
         }
+        public T copy(User user) {
+            this.userId = user.userId;
+            this.name = user.name;
+            this.email = user.email;
+            this.password = user.password;
+            this.phoneNumber = user.phoneNumber;
+            this.role = user.role;
+            return self();
+        }
+
         protected abstract T self();
         public abstract User build();
 

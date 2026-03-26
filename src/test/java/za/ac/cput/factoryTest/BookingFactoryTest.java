@@ -21,7 +21,7 @@ public class BookingFactoryTest {
                 .setStudentNumber("320223456")
                 .setFaculty("Informatics")
                 .setDepartment("Applications Development")
-                .yearOfStudy(2)
+                .setYearOfStudy(2)
                 .build();
 
         Event event = new Event.Builder()
@@ -53,7 +53,7 @@ public class BookingFactoryTest {
     public void createBookingWithInvalidId() {
         Student student = new Student.Builder().setName("Sam").setEmail("sam@gmail.com").setPassword("1234")
                 .setPhoneNumber("0812345678").setStudentNumber("220123456").setFaculty("IT").setDepartment("ADP")
-                .yearOfStudy(2).build();
+                .setYearOfStudy(2).build();
 
         Event event = new Event.Builder().setName("Tech Talk").setDescription("Java Workshop")
                 .setDateTime("2026-05-10 10:00").setMaxAttendees(100).build();
@@ -91,7 +91,7 @@ public class BookingFactoryTest {
     public void createBookingWithNullEvent() {
         Student student = new Student.Builder().setName("Sam").setEmail("sam@gmail.com").setPassword("1234")
                 .setPhoneNumber("0812345678").setStudentNumber("220123456").setFaculty("IT").setDepartment("ADP")
-                .yearOfStudy(2).build();
+                .setYearOfStudy(2).build();
 
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> BookingFactory.createBooking(

@@ -38,7 +38,7 @@ public class BookingRepositoryTest {
                 .setStudentNumber("220123456")
                 .setFaculty("Informatics")
                 .setDepartment("Applications Development")
-                .yearOfStudy(2)
+                .setYearOfStudy(2)
                 .build();
 
         student2 = new Student.Builder()
@@ -50,7 +50,7 @@ public class BookingRepositoryTest {
                 .setStudentNumber("220654321")
                 .setFaculty("Informatics")
                 .setDepartment("Applications Development")
-                .yearOfStudy(2)
+                .setYearOfStudy(2)
                 .build();
 
         event1 = new Event.Builder()

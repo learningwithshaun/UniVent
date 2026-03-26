@@ -32,7 +32,8 @@ public class StudentRepositoryTest {
                 "220123456",
                 "Informatics",
                 "Applications Development",
-                2
+                2,
+                null
         );
 
         repository.create(student);
@@ -61,7 +62,7 @@ public class StudentRepositoryTest {
                 .setStudentNumber(student.getStudentNumber())
                 .setFaculty(student.getFaculty())
                 .setDepartment(student.getDepartment())
-                .yearOfStudy(student.getYearOfStudy())
+                .setYearOfStudy(student.getYearOfStudy())
                 .build();
 
         repository.update(updated);
@@ -92,7 +93,8 @@ public class StudentRepositoryTest {
                 "220999999",
                 "Informatics",
                 "Applications Development",
-                2
+                2,
+                null
         );
 
         repository.create(student2);

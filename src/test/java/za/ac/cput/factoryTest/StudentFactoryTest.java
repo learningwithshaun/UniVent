@@ -1,8 +1,12 @@
 package za.ac.cput.factoryTest;
 
 import org.junit.Test;
+import za.ac.cput.domain.Booking;
 import za.ac.cput.domain.Student;
 import za.ac.cput.factory.StudentFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 /**Student name: Samukelo Ndlela
@@ -19,11 +23,13 @@ public class StudentFactoryTest {
                 "Samukelo",
                 "sam@gmail.com",
                 "1234",
-                "0812543678",
+                "0615436768",
                 "320223456",
-                "Informatics",
+                "Informatics & Design",
                 "Applications Development",
-                2
+                2,
+                null
+
         );
 
         assertNotNull(student);
@@ -42,11 +48,34 @@ public class StudentFactoryTest {
                     "220123456",
                     "IT",
                     "ADP",
-                    2
+                    2,
+                    null
             );
         });
 
         assertEquals("Invalid email", exception.getMessage());
+    }
+
+    @Test
+    public void createStudentWithBookings() {
+
+        List<Booking> bookings = new ArrayList<>();
+        bookings.add(new Booking.Builder().setBookingId(1).build());
+
+        Student student = StudentFactory.createStudent(
+                "Samukelo",
+                "sam@gmail.com",
+                "1234",
+                "0812543678",
+                "320223456",
+                "IT",
+                "ADP",
+                2,
+                bookings
+        );
+
+        assertNotNull(student.getBookings());
+        assertEquals(1, student.getBookings().size());
     }
 
     @Test
@@ -60,7 +89,8 @@ public class StudentFactoryTest {
                     "220123456",
                     "IT",
                     "ADP",
-                    2
+                    2,
+                    null
             );
         });
 
@@ -78,7 +108,8 @@ public class StudentFactoryTest {
                     "220123456",
                     "IT",
                     "ADP",
-                    2
+                    2,
+                    null
             );
         });
 
@@ -96,7 +127,8 @@ public class StudentFactoryTest {
                     "220123456",
                     "IT",
                     "ADP",
-                    0
+                    0,
+                    null
             );
         });
 
