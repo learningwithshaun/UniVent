@@ -3,10 +3,10 @@ package za.ac.cput.domain;
 import java.time.LocalDateTime;
 
 public class Booking {
-    // Attributes (made final for immutability)
+    // Attributes
     private final int bookingId;
     private final LocalDateTime bookingDate;
-    private final BookingStatusEnum status;
+    private BookingStatusEnum status;  // remove final so it can be updated
     private final Student student;
     private final Event event;
 
@@ -20,25 +20,11 @@ public class Booking {
     }
 
     // Getters
-    public int getBookingId() {
-        return bookingId;
-    }
-
-    public LocalDateTime getBookingDate() {
-        return bookingDate;
-    }
-
-    public BookingStatusEnum getStatus() {
-        return status;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
+    public int getBookingId() { return bookingId; }
+    public LocalDateTime getBookingDate() { return bookingDate; }
+    public BookingStatusEnum getStatus() { return status; }
+    public Student getStudent() { return student; }
+    public Event getEvent() { return event; }
 
     @Override
     public String toString() {
@@ -51,7 +37,9 @@ public class Booking {
                 '}';
     }
 
-    public void setStatus(String cancelled) {
+    // ✅ Correct setter
+    public void setStatus(BookingStatusEnum status) {
+        this.status = status;
     }
 
     // Builder class

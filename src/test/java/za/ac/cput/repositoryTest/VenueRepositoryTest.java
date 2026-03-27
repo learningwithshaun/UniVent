@@ -117,7 +117,7 @@ public class VenueRepositoryTest {
         assertEquals(400, venue.getCapacity());
     }
 
-    // ✅ Repository CRUD tests
+
     @Test
     public void testRepositoryCRUD() {
         VenueRepository repo = VenueRepository.getInstance();
