@@ -11,13 +11,13 @@ package za.ac.cput.domain;
 
 public class Ticket {
     private int ticketId;
-    //private int bookingId;
+    private int bookingId;
     private int issueDate;
     private int ticketCode;
 
     private Ticket(Builder builder) {
         this.ticketId = builder.ticketId;
-        //this.bookingId = builder.bookingId;
+        this.bookingId = builder.bookingId;
         this.issueDate = builder.issueDate;
         this.ticketCode = builder.ticketCode;
     }
@@ -27,11 +27,10 @@ public class Ticket {
     }
 
 
-   /* public int getBookingId() {
+   public int getBookingId() {
         return bookingId;
     }
 
-    */
     public int getIssueDate() {
         return issueDate;
     }
@@ -43,7 +42,7 @@ public class Ticket {
     public String toString() {
         return "Ticket{" +
                 "ticketId=" + ticketId +
-               // ", bookingId=" + bookingId +
+               ", bookingId=" + bookingId +
                 ", issueDate=" + issueDate +
                 ", ticketCode=" + ticketCode +
                 '}';
@@ -51,7 +50,7 @@ public class Ticket {
 
     public static class Builder {
         private int ticketId;
-        //private int bookingId;
+        private int bookingId;
         private int issueDate;
         private int ticketCode;
 
@@ -59,12 +58,12 @@ public class Ticket {
             this.ticketId = ticketId;
             return this;
         }
-        /*public Builder setBookingId(int bookingId) {
+        public Builder setBookingId(int bookingId) {
             this.bookingId = bookingId;
             return this;
         }
 
-         */
+
         public Builder setIssueDate(int issueDate) {
             this.issueDate = issueDate;
             return this;
